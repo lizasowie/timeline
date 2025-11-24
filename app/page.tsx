@@ -2,9 +2,6 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import WeekPlanner from "./components/WeekPlanner";
 import ActionCard from "./components/ActionCard";
-import VacationInfo from "./components/VacationInfo";
-import ShiftChangeCard from "./components/ShiftChangeCard";
-import FeedbackBox from "./components/FeedbackBox";
 
 export default function Page() {
   return (
@@ -21,14 +18,13 @@ export default function Page() {
         <main className="flex-1 flex flex-col">
           <div className="p-6 flex gap-6">
             <WeekPlanner />
-            <FeedbackBox />
           </div>
           <div className="p-6 grid grid-cols-4 gap-6">
             <ActionCard title="Wunschdienst eintragen" onClick={undefined} />
             <ActionCard title="Krankmeldung einreichen" onClick={undefined}/>
             <ActionCard title="Urlaub beantragen" onClick={undefined}/>
-            <ShiftChangeCard />
-            <VacationInfo />
+            <ActionCard title="Feedback mitteilen" onClick={undefined}/>
+            <ActionCard title="Schichtwechsel anfragen" onClick={undefined}/>
           </div>
         </main>
       </div>

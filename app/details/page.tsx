@@ -30,7 +30,7 @@ export default function MoreInfoPage() {
         </p>
 
         <a
-          href="/"
+          href="/login"
           className="inline-block mt-6 bg-[#156082] text-white px-6 py-3 rounded-xl shadow hover:opacity-90 transition"
         >
           Zurück zur Startseite

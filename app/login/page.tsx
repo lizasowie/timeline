@@ -13,7 +13,7 @@ export default function Page() {
         </p>
 
         <div className="flex flex-col gap-4 mt-6">
-          <Link href="/dashboard">
+          <Link href="/">
           <button className="bg-[#156082] text-white py-3 px-6 rounded-xl shadow hover:opacity-90 transition">
             Login
           </button>
