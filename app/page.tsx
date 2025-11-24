@@ -24,9 +24,9 @@ export default function Page() {
             <FeedbackBox />
           </div>
           <div className="p-6 grid grid-cols-4 gap-6">
-            <ActionCard title="Wunschdienst eintragen"/>
-            <ActionCard title="Krankmeldung einreichen" />
-            <ActionCard title="Urlaub beantragen" />
+            <ActionCard title="Wunschdienst eintragen" onClick={undefined} />
+            <ActionCard title="Krankmeldung einreichen" onClick={undefined}/>
+            <ActionCard title="Urlaub beantragen" onClick={undefined}/>
             <ShiftChangeCard />
             <VacationInfo />
           </div>
