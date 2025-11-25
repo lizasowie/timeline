@@ -2,10 +2,11 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import WeekPlanner from "./components/WeekPlanner";
 import ActionCard from "./components/ActionCard";
+import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-[#faf6e3] flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-[#4cabaa] to-[#2b8584] flex flex-col">
       {/* Navbar oben, volle Breite */}
       <Navbar name="Max Mustermann" />
 
@@ -22,7 +23,7 @@ export default function Page() {
           <div className="p-6 grid grid-cols-4 gap-6">
             <ActionCard title="Wunschdienst eintragen" onClick={undefined} />
             <ActionCard title="Krankmeldung einreichen" onClick={undefined}/>
-            <ActionCard title="Urlaub beantragen" onClick={undefined}/>
+            <Link href="/urlaub"> <ActionCard title="Urlaub beantragen" onClick={undefined}/> </Link>
             <ActionCard title="Feedback mitteilen" onClick={undefined}/>
             <ActionCard title="Schichtwechsel anfragen" onClick={undefined}/>
           </div>

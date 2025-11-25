@@ -10,7 +10,9 @@ export default function Navbar({ name = "Name" }) {
   useEffect(() => {
     const updateClock = () => {
       const now = new Date();
-      setTime(now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
+      setTime(
+        now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+      );
     };
 
     updateClock();
@@ -19,28 +21,47 @@ export default function Navbar({ name = "Name" }) {
   }, []);
 
   return (
-    <nav className="w-full px-6 py-3 bg-[#faf6e3] flex items-center justify-between border-b border-neutral-300">
-      
+    <nav className="w-full px-4 py-2 md:px-6 md:py-4 bg-[#faf6e3] flex items-center justify-between border-b border-neutral-300">
+
       {/* left side */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 md:gap-6">
+
         <Link href="/">
-        <div className="bg-[#5fb9b5] text-gray-800 rounded-xl px-3 py-3 flex flex-col items-center justify-center shadow-sm">
-          <Clock size={28} strokeWidth={1.5} />
-          <span className="text-[11px] opacity-80 -mt-1">Timeline</span>
-        </div>
+          <div className="
+            bg-[#5fb9b5] text-gray-800 rounded-xl 
+            px-2 py-2 md:px-3 md:py-3 
+            flex flex-col items-center justify-center shadow-sm
+          ">
+            <Clock 
+              size={22} 
+              strokeWidth={1.5} 
+              className="md:size-7"
+            />
+            <span className="text-[10px] md:text-[11px] opacity-80 -mt-1">
+              Timeline
+            </span>
+          </div>
         </Link>
 
-        <span className="text-xl text-gray-700 font-light">
+        <span className="text-lg md:text-xl text-gray-700 font-light">
           Willkommen, {name}
         </span>
       </div>
 
-    {/* right side */}
-    <Link href="/login">
-        <button className="p-2 rounded-full border-2 border-gray-500 hover:bg-gray-100 transition">
-        <User size={28} strokeWidth={1.5} className="text-gray-700" />
-      </button>
-    </Link>
+      {/* right side */}
+      <Link href="/login">
+        <button className="
+          p-1.5 md:p-2 
+          rounded-full border-2 border-gray-500 
+          hover:bg-gray-100 transition
+        ">
+          <User 
+            size={22} 
+            className="text-gray-700 md:size-7"
+            strokeWidth={1.5}
+          />
+        </button>
+      </Link>
     </nav>
   );
 }
