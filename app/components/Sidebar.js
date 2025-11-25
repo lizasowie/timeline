@@ -1,14 +1,15 @@
 "use client";
 
 import { Home, Calendar, Plane, Heart, PieChart } from "lucide-react";
+import Link from "next/link";
 
 export default function Sidebar() {
   const items = [
-    { icon: <Home size={26} />, label: "Home" },
-    { icon: <Calendar size={26} />, label: "Calendar" },
-    { icon: <Plane size={26} />, label: "Travel" },
-    { icon: <Heart size={26} />, label: "Health" },
-    { icon: <PieChart size={26} />, label: "Stats" },
+    { icon: <Home size={26} />, label: "Home", href: "/" },
+    { icon: <Calendar size={26} />, label: "Calendar", href: "/calender" },
+    { icon: <Plane size={26} />, label: "Urlaub", href: "/urlaub" },
+    { icon: <Heart size={26} />, label: "Krankheit", href: "/sick" },
+    { icon: <PieChart size={26} />, label: "Stats", href: "/stats" },
   ];
 
   return (
@@ -19,16 +20,17 @@ export default function Sidebar() {
       "
     >
       {items.map((item, i) => (
-        <button
-          key={i}
-          className="
-            w-14 h-14 bg-[#faf6e3] rounded-xl flex items-center justify-center text-black 
-            hover:bg-[#479b98] transition
-          "
-        >
-          {item.icon}
-        </button>
-      ))}
+  <Link
+    key={i}
+    href={item.href}
+    className="
+      w-14 h-14 bg-[#faf6e3] rounded-xl flex items-center justify-center text-black 
+      hover:bg-[#479b98] transition
+    "
+  >
+    {item.icon}
+  </Link>
+))}
     </aside>
   );
 }
