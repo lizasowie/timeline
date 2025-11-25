@@ -77,8 +77,8 @@ export default function WeekPlanner() {
   return (
     <div className="p-4 md:p-10 min-h-screen">
       <div className="bg-white rounded-3xl shadow-xl p-6 md:p-10">
-        <h1 className="text-3xl md:text-4xl font-bold mb-6 text-[#156082] text-center">
-          Wochenplan
+        <h1 className="text-3xl md:text-4xl font-bold mb-6 text-black text-center">
+          Dienstplan
         </h1>
 
         <Calendar
@@ -89,8 +89,9 @@ export default function WeekPlanner() {
           step={60}
           timeslots={1}
           defaultDate={new Date(2025, 10, 24)}
-          style={{ height: 600 }}
+          style={{ height: 700 }}
           eventPropGetter={eventStyleGetter}
+          
         />
       </div>
     </div>

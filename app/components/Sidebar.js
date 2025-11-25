@@ -24,7 +24,7 @@ export default function Sidebar() {
     key={i}
     href={item.href}
     className="
-      w-14 h-14 bg-[#faf6e3] rounded-xl flex items-center justify-center text-black 
+      w-14 h-14 bg-white rounded-xl flex items-center justify-center text-black 
       hover:bg-[#479b98] transition
     "
   >

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#4cabaa] to-[#2b8584] flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       
       {/* Navbar oben */}
       <Navbar name="Max Mustermann" />
