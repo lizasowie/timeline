@@ -6,9 +6,7 @@ import Link from "next/link";
 export default function Sidebar() {
   const items = [
     { icon: <Home size={26} />, label: "Home", href: "/" },
-    { icon: <Calendar size={26} />, label: "Calendar", href: "/calender" },
-    { icon: <Plane size={26} />, label: "Urlaub", href: "/urlaub" },
-    { icon: <Heart size={26} />, label: "Krankheit", href: "/sick" },
+    { icon: <Plane size={26} />, label: "Abwesenheit", href: "/abwesenheit" },
     { icon: <PieChart size={26} />, label: "Stats", href: "/stats" },
   ];
 

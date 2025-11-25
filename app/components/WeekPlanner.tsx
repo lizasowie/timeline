@@ -21,11 +21,36 @@ interface ShiftEvent extends Event {
   type: ShiftType;
 }
 
+// -----------------------------
+// Nacht-Schicht Split Funktion
+// -----------------------------
+function splitNightShift(title: string, start: Date, end: Date): ShiftEvent[] {
+  const midnight = new Date(start);
+  midnight.setHours(23, 59, 59, 999);
+
+  const nextMorning = new Date(end);
+
+  return [
+    {
+      type: "nacht",
+      title,
+      start,
+      end: midnight,
+    },
+    {
+      type: "nacht",
+      title,
+      start: new Date(midnight.getTime() + 1),
+      end: nextMorning,
+    },
+  ];
+}
+
 // Beispiel-Daten
 const shifts: ShiftEvent[] = [
   {
     title: "Frühschicht",
-    start: new Date(2025, 10, 24, 6, 0), // 24.11.2025 06:00
+    start: new Date(2025, 10, 24, 6, 0),
     end: new Date(2025, 10, 24, 14, 0),
     type: "früh",
   },
@@ -38,15 +63,23 @@ const shifts: ShiftEvent[] = [
   {
     title: "Nachtschicht",
     start: new Date(2025, 10, 24, 22, 0),
-    end: new Date(2025, 10, 25, 6, 0), // geht über Mitternacht
+    end: new Date(2025, 10, 25, 6, 0),
     type: "nacht",
   },
 ];
 
 export default function WeekPlanner() {
-  const [events] = useState<ShiftEvent[]>(shifts);
+  // Splitte alle Nachtschichten in zwei Teile
+  const processedEvents: ShiftEvent[] = shifts.flatMap((shift) => {
+    if (shift.type === "nacht") {
+      return splitNightShift(shift.title, shift.start, shift.end); // Fehlermeldung kommt durch die Action Cards bei denen aktuell onClick: undefined gestezt ist
+    }
+    return shift;
+  });
 
-  // Farbzuordnung
+  const [events] = useState<ShiftEvent[]>(processedEvents);
+
+  // Farbzuordnung für Schichten
   const eventStyleGetter = (event: ShiftEvent) => {
     let backgroundColor = "#4caf50"; // default grün
 
@@ -62,16 +95,16 @@ export default function WeekPlanner() {
         break;
     }
 
-    const style = {
-      backgroundColor,
-      color: event.type === "nacht" ? "white" : "black",
-      borderRadius: "8px",
-      border: "none",
-      padding: "2px 4px",
-      fontSize: "0.85rem",
+    return {
+      style: {
+        backgroundColor,
+        color: event.type === "nacht" ? "white" : "black",
+        borderRadius: "8px",
+        border: "none",
+        padding: "2px 4px",
+        fontSize: "0.85rem",
+      },
     };
-
-    return { style };
   };
 
   return (
@@ -91,7 +124,6 @@ export default function WeekPlanner() {
           defaultDate={new Date(2025, 10, 24)}
           style={{ height: 700 }}
           eventPropGetter={eventStyleGetter}
-          
         />
       </div>
     </div>

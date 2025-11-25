@@ -21,28 +21,25 @@ export default function UrlaubPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Urlaubsanfrage:", {
-      startDate,
-      endDate,
-      reason,
-      comment,
-      days: calculateDays(),
-    });
     alert("Urlaubsanfrage wurde eingereicht!");
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#4cabaa] to-[#2b8584]">
-
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      
+      {/* Navbar */}
       <Navbar name="Benutzer" />
 
-      <div className="flex flex-1">
+      {/* Hauptlayout */}
+      <div className="flex flex-1 overflow-hidden">
 
+        {/* Sidebar */}
         <Sidebar />
 
-        <main className="flex-1 p-4 md:p-10 pb-24 md:pb-10 overflow-auto">
+        {/* Content */}
+        <main className="flex-1 p-4 md:p-10 overflow-auto">
 
-          <div className="bg-[#faf6e3] backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.15)] p-8 md:p-12 max-w-2xl mx-auto border border-white/40">
+          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-2xl mx-auto border border-neutral-200">
 
             <h1 className="text-3xl md:text-4xl font-bold text-[#156082] mb-6 text-center">
               Urlaubsanfrage
@@ -50,7 +47,7 @@ export default function UrlaubPage() {
 
             <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
 
-              {/* STARTDATUM */}
+              {/* Startdatum */}
               <div>
                 <label className="font-medium text-gray-700">Startdatum</label>
                 <input
@@ -62,7 +59,7 @@ export default function UrlaubPage() {
                 />
               </div>
 
-              {/* ENDDATUM */}
+              {/* Enddatum */}
               <div>
                 <label className="font-medium text-gray-700">Enddatum</label>
                 <input
@@ -74,7 +71,7 @@ export default function UrlaubPage() {
                 />
               </div>
 
-              {/* GRUND */}
+              {/* Grund */}
               <div>
                 <label className="font-medium text-gray-700">Grund</label>
                 <select
@@ -89,7 +86,7 @@ export default function UrlaubPage() {
                 </select>
               </div>
 
-              {/* KOMMENTAR */}
+              {/* Kommentar */}
               <div>
                 <label className="font-medium text-gray-700">Kommentar (optional)</label>
                 <textarea
@@ -101,12 +98,12 @@ export default function UrlaubPage() {
                 />
               </div>
 
-              {/* TAGE */}
+              {/* Tage */}
               <div className="text-right text-gray-700 font-medium text-lg">
-                Dauer: <span className="text-[#156082]">{calculateDays()}</span> Tage
+                Dauer: <span className="text-[#156082] font-semibold">{calculateDays()}</span> Tage
               </div>
 
-              {/* BUTTON */}
+              {/* Senden-Button */}
               <button
                 type="submit"
                 className="bg-[#156082] text-white py-3 px-6 rounded-xl shadow-md text-lg font-medium hover:shadow-lg hover:-translate-y-[2px] transition-all"
@@ -115,10 +112,9 @@ export default function UrlaubPage() {
               </button>
 
             </form>
-
           </div>
-        </main>
 
+        </main>
       </div>
     </div>
   );
